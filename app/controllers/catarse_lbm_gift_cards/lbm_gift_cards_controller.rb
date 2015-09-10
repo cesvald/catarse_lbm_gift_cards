@@ -37,7 +37,10 @@ class CatarseLbmGiftCards::LbmGiftCardsController < ApplicationController
           return redirect_to main_app.new_project_backer_path(backer.project)  
         when 'cant_redeem'
           flash[:failure] = t('error_duplicate', scope: SCOPE)
-          return redirect_to main_app.new_project_backer_path(backer.project)  
+          return redirect_to main_app.new_project_backer_path(backer.project)
+        when 'expired'
+          flash[:failure] = t('error_expired', scope: SCOPE)
+          return redirect_to main_app.new_project_backer_path(backer.project)
         else
           flash[:failure] = t('error', scope: SCOPE)
           return redirect_to main_app.new_project_backer_path(backer.project)  
