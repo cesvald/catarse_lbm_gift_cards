@@ -13,7 +13,7 @@ class CatarseLbmGiftCards::LbmGiftCardsController < ApplicationController
   def pay
     backer = current_user.backs.not_confirmed.find params[:id]
     if backer
-      response = HTTParty.put("https://lbmgiftcards.herokuapp.com/gift_cards/#{params[:coupon]}/redeem", headers: {'Authorization' => "Token token=\"#{PaymentEngines.configuration[:lbm_gift_cards_api_key]}\""}, body: { value: backer.value.to_i })
+      response = HTTParty.put("https://localhost:3001/gift_cards/#{params[:coupon]}/redeem", headers: {'Authorization' => "Token token=\"#{PaymentEngines.configuration[:lbm_gift_cards_api_key]}\""}, body: { value: backer.value.to_i })
       case response.code
       when 200, 204, 406
         if Backer.confirmed.where(payment_method: 'LbmGiftCard', payment_id: params[:coupon]).count == 0
@@ -24,7 +24,7 @@ class CatarseLbmGiftCards::LbmGiftCardsController < ApplicationController
           redirect_to main_app.project_backer_path(project_id: backer.project.id, id: backer.id)
         else
           flash[:failure] = t('error_duplicate', scope: SCOPE)
-          return redirect_to main_app.new_project_backer_path(backer.project)  
+          return redirect_to main_app.new_project_backer_path(backer.project)
         end
       when 404
         flash[:failure] = t('error_coupon', scope: SCOPE)
