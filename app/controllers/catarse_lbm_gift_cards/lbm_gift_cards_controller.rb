@@ -13,7 +13,7 @@ class CatarseLbmGiftCards::LbmGiftCardsController < ApplicationController
   def pay
     backer = current_user.backs.not_confirmed.find params[:id]
     if backer
-      response = HTTParty.put("http://localhost:3001/gift_cards/#{params[:coupon]}/redeem", headers: {'Authorization' => "Token token=\"#{PaymentEngines.configuration[:lbm_gift_cards_api_key]}\""}, body: { value: backer.value.to_i })
+      response = HTTParty.put("https://lbmgiftcardstest.herokuapp.com/gift_cards/#{params[:coupon]}/redeem", headers: {'Authorization' => "Token token=\"#{PaymentEngines.configuration[:lbm_gift_cards_api_key]}\""}, body: { value: backer.value.to_i })
       case response.code
       when 200, 204, 406
         if Backer.confirmed.where(payment_method: 'LbmGiftCard', payment_id: params[:coupon]).count == 0
