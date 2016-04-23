@@ -10,6 +10,9 @@ class CatarseLbmGiftCards::LbmGiftCardsController < ApplicationController
   def review
   end
 
+  def payment_form
+  end
+  
   def pay
     backer = current_user.backs.not_confirmed.find params[:id]
     if backer

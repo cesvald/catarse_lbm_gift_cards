@@ -1,16 +1,4 @@
-- scope = 'projects.backers.review.lbm_gift_cards_info'
-
-h3= t('title', scope: scope)
-#catarse_lbm_gift_cards_form
-  = form_tag pay_lbm_gift_card_path(params[:id]) do
-    .clearfix
-    .bootstrap-twitter
-      = label_tag 'coupon', t('coupon', scope: scope)
-      .clearfix
-      = text_field_tag 'coupon', nil, { autocomplete: 'off' }
-      .clearfix
-      fieldset.accept_terms
-        = check_box_tag 'accept_terms', '1', false
-        = label_tag 'accept_terms', t('accept_terms_html', scope: scope), class: 'inline'
-      .loader.hide= image_tag 'loading.gif'
-      = submit_tag t('submit', scope: scope), class: 'btn btn-primary btn-large disabled', disabled: true
+.payment-form
+  .submit-wrapper
+    = image_tag "lbm/giftcard-icon.png", class: "payment-icon"
+.hidden#payment-form-target data-target="#{(backer){ CatarseLbmGiftCards::Engine.routes.url_helpers.payment_form_lbm_gift_card_path(backer)}"
