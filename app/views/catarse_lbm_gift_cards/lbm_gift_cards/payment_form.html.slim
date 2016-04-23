@@ -11,5 +11,4 @@
       fieldset.accept_terms
         = check_box_tag 'accept_terms', '1', false
         = label_tag 'accept_terms', t('accept_terms_html', scope: scope), class: 'inline'
-      .loader.hide= image_tag 'loading.gif'
-    = submit_tag t('submit', scope: scope), class: 'lbm-btn', disabled: true
+    = submit_tag t('submit', scope: scope), class: 'lbm-button', disabled: true

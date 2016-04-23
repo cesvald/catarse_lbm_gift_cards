@@ -1,4 +1,4 @@
-$("#catarse_lbm_gift_cards_form #accept_terms").live('change', function(){
+$("#catarse_lbm_gift_cards_form #accept_terms").on('change', function(){
   submit = $("#catarse_lbm_gift_cards_form input[type=submit]")
   if ($(this).is(':checked')) {
     submit.attr('disabled', false)
