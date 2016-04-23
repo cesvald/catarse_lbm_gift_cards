@@ -1,4 +1,4 @@
 .payment-form
   .submit-wrapper
     = image_tag "lbm/giftcard-icon.png", class: "payment-icon"
-.hidden#payment-form-target data-target="#{(backer){ CatarseLbmGiftCards::Engine.routes.url_helpers.payment_form_lbm_gift_card_path(backer)}"
+div[id="payment-form-target" data-target="#{(backer){ CatarseLbmGiftCards::Engine.routes.url_helpers.payment_form_lbm_gift_card_path(backer)}}"]
