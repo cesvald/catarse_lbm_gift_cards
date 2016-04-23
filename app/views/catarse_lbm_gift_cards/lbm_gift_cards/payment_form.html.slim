@@ -6,10 +6,10 @@
     .bootstrap-twitter
       = label_tag 'coupon', t('coupon', scope: scope)
       .clearfix
-      = text_field_tag 'coupon', nil, { autocomplete: 'off' }, class: 'lbm-input'
+      = text_field_tag 'coupon', nil, { autocomplete: 'off', class: 'lbm-input' }
       .clearfix
       fieldset.accept_terms
         = check_box_tag 'accept_terms', '1', false
         = label_tag 'accept_terms', t('accept_terms_html', scope: scope), class: 'inline'
       .loader.hide= image_tag 'loading.gif'
-    = submit_tag t('submit', scope: scope), class: 'btn btn-primary btn-large disabled', disabled: true
+    = submit_tag t('submit', scope: scope), class: 'lbm-btn', disabled: true
